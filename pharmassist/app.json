@@ -1,0 +1,35 @@
+{
+  "name": "pharmassist",
+  "description": "This is my fourth year project. The system is to be used by patients to connect them to pharmacies helping them locate pharmacies near them as well as get drug details such as recommended drug prices and the authenticity of drug hence curb drug counterfeit.",
+  "env": {
+    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-python",
+    "DJANGO_SETTINGS_MODULE": "config.settings.production",
+    "DJANGO_SECRET_KEY": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "DJANGO_ALLOWED_HOSTS": {
+      "description": "Comma-separated list of hosts",
+      "value": ".herokuapp.com"
+    },
+    "DJANGO_ADMIN_URL": {
+      "description": "A secret URL for the Django admin",
+      "generator": "secret"
+    },
+    "DJANGO_AWS_ACCESS_KEY_ID": "",
+    "DJANGO_AWS_SECRET_ACCESS_KEY": "",
+    "DJANGO_AWS_STORAGE_BUCKET_NAME": "",
+    "DJANGO_MAILGUN_SERVER_NAME": "",
+    "NEW_RELIC_LICENSE_KEY": "",
+    "DJANGO_MAILGUN_API_KEY": "",
+    "DJANGO_SENTRY_DSN": "" 
+  },
+  "scripts": {
+    "postdeploy": "python manage.py migrate"
+  },
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "heroku-redis:hobby-dev",
+    "mailgun"
+  ]
+}
